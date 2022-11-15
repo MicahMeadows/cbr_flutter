@@ -17,11 +17,10 @@ class VotePage extends StatefulWidget {
 
 class _VotePageState extends State<VotePage> {
   void submitWinner(
-    BuildContext ctx,
     LocationDTO winner,
     MatchDTO match,
   ) {
-    ctx.read<VoteCubit>().submitMatch(match, winner);
+    context.read<VoteCubit>().submitMatch(match, winner);
   }
 
   LoadedState? lastLoadedState;
@@ -61,7 +60,6 @@ class _VotePageState extends State<VotePage> {
                                   ),
                                   onChoose: () {
                                     submitWinner(
-                                      context,
                                       loadedState.loadedMatch.redTeam,
                                       loadedState.loadedMatch,
                                     );
@@ -92,7 +90,6 @@ class _VotePageState extends State<VotePage> {
                                     ),
                                     onChoose: () {
                                       submitWinner(
-                                          context,
                                           loadedState.loadedMatch.blueTeam,
                                           loadedState.loadedMatch);
                                     },
