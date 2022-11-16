@@ -1,5 +1,6 @@
 import 'package:cbr_flutter/data/cbr_retrofit_api/dto/location_dto.dart';
 import 'package:cbr_flutter/data/cbr_retrofit_api/dto/match_dto.dart';
+import 'package:cbr_flutter/data/cubit/rankings/rankings/rankings_cubit.dart';
 import 'package:cbr_flutter/data/cubit/vote/vote_state.dart';
 import 'package:cbr_flutter/widget/page/vote/vote_option.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class _VotePageState extends State<VotePage> {
     MatchDTO match,
   ) {
     context.read<VoteCubit>().submitMatch(match, winner);
+    context.read<RankingsCubit>().loadRankings();
   }
 
   LoadedState? lastLoadedState;

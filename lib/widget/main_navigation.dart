@@ -18,7 +18,7 @@ enum SelectedPage {
 }
 
 class _MainNavigationState extends State<MainNavigation> {
-  SelectedPage _selectedPage = SelectedPage.rankings;
+  SelectedPage _selectedPage = SelectedPage.vote;
 
   static const _headerUnselectedOpacity = .5;
 
@@ -88,7 +88,13 @@ class _MainNavigationState extends State<MainNavigation> {
                       ),
                     ),
                     Spacer(),
-                    Text('Campus Beautiful Royale'),
+                    Text(
+                      'Campus Beautiful Royale',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   ],
                 ),
               );
