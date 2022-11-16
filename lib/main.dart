@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (ctx) => voteCubit),
-        BlocProvider(create: (ctx) => rankingCubit),
+        BlocProvider(create: (ctx) => voteCubit, lazy: false),
+        BlocProvider(create: (ctx) => rankingCubit, lazy: false),
       ],
       child: MaterialApp(
         scrollBehavior: MaterialScrollBehavior().copyWith(

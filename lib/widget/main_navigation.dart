@@ -24,71 +24,80 @@ class _MainNavigationState extends State<MainNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        title: LayoutBuilder(
-          builder: (ctx, constraints) {
-            return Container(
-              margin:
-                  EdgeInsets.symmetric(horizontal: constraints.maxWidth * .05),
-              child: Row(
-                children: [
-                  Opacity(
-                    opacity: _selectedPage == SelectedPage.rankings
-                        ? 1
-                        : _headerUnselectedOpacity,
-                    child: CustomNavButton(
-                      title: 'Rankings',
-                      iconImage: const Icon(
-                        Icons.trending_up_rounded,
+    return LayoutBuilder(builder: (ctx, constraints) {
+      if (constraints.maxWidth < 800) {
+        return const Material(
+          child: Center(
+            child: Text('Device too small. Please download the mobile app.'),
+          ),
+        );
+      }
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          title: LayoutBuilder(
+            builder: (ctx, constraints) {
+              return Container(
+                margin: EdgeInsets.symmetric(
+                    horizontal: constraints.maxWidth * .05),
+                child: Row(
+                  children: [
+                    Opacity(
+                      opacity: _selectedPage == SelectedPage.rankings
+                          ? 1
+                          : _headerUnselectedOpacity,
+                      child: CustomNavButton(
+                        title: 'Rankings',
+                        iconImage: const Icon(
+                          Icons.trending_up_rounded,
+                        ),
+                        onTap: () => setState(() {
+                          _selectedPage = SelectedPage.rankings;
+                        }),
                       ),
-                      onTap: () => setState(() {
-                        _selectedPage = SelectedPage.rankings;
-                      }),
                     ),
-                  ),
-                  SizedBox(width: 50),
-                  Opacity(
-                    opacity: _selectedPage == SelectedPage.vote
-                        ? 1
-                        : _headerUnselectedOpacity,
-                    child: CustomNavButton(
-                      title: 'Vote',
-                      iconImage: const Icon(
-                        Icons.balance_rounded,
+                    SizedBox(width: 50),
+                    Opacity(
+                      opacity: _selectedPage == SelectedPage.vote
+                          ? 1
+                          : _headerUnselectedOpacity,
+                      child: CustomNavButton(
+                        title: 'Vote',
+                        iconImage: const Icon(
+                          Icons.balance_rounded,
+                        ),
+                        onTap: () => setState(() {
+                          _selectedPage = SelectedPage.vote;
+                        }),
                       ),
-                      onTap: () => setState(() {
-                        _selectedPage = SelectedPage.vote;
-                      }),
                     ),
-                  ),
-                  SizedBox(width: 50),
-                  Opacity(
-                    opacity: _selectedPage == SelectedPage.more
-                        ? 1
-                        : _headerUnselectedOpacity,
-                    child: CustomNavButton(
-                      title: 'More',
-                      iconImage: const Icon(
-                        Icons.info_outline_rounded,
+                    SizedBox(width: 50),
+                    Opacity(
+                      opacity: _selectedPage == SelectedPage.more
+                          ? 1
+                          : _headerUnselectedOpacity,
+                      child: CustomNavButton(
+                        title: 'More',
+                        iconImage: const Icon(
+                          Icons.info_outline_rounded,
+                        ),
+                        onTap: () => setState(() {
+                          _selectedPage = SelectedPage.more;
+                        }),
                       ),
-                      onTap: () => setState(() {
-                        _selectedPage = SelectedPage.more;
-                      }),
                     ),
-                  ),
-                  Spacer(),
-                  Text('Campus Beautiful Royale'),
-                ],
-              ),
-            );
-          },
+                    Spacer(),
+                    Text('Campus Beautiful Royale'),
+                  ],
+                ),
+              );
+            },
+          ),
         ),
-      ),
-      body: _bodyWidget,
-    );
+        body: _bodyWidget,
+      );
+    });
   }
 
   Widget get _bodyWidget {

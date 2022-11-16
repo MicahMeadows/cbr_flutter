@@ -26,7 +26,7 @@ class RankCard extends StatelessWidget {
       child: Row(children: [
         SizedBox(width: 10),
         Text(
-          ranking.rank.toString(),
+          (ranking.rank + 1).toString(),
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
         SizedBox(width: 10),
@@ -34,6 +34,16 @@ class RankCard extends StatelessWidget {
           ranking.location.name,
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
+        const Spacer(),
+        Text(
+          ranking.location.rating.toStringAsFixed(0),
+          style: TextStyle(
+            color: Colors.black.withOpacity(.3),
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        SizedBox(width: 20),
       ]),
     );
   }
